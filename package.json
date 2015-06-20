@@ -19,6 +19,7 @@
   "dependencies": {
     "gulp": "^3.9.0",
     "gulp-typescript": "^2.7.7",
+    "gulp-util": "^3.0.5",
     "tsd": "^0.6.3"
   }
 }
