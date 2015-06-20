@@ -1,3 +1,6 @@
+/**
+ * AngularJS Reference Book p.260
+ */
 angular.module('tabSet', ['ng'])
   .controller('tabSetCtrl', function($scope){
     this.tabs = $scope.tabs = [];
