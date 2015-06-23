@@ -8,6 +8,10 @@ npm install
 gulp watch
 ```
 
+## Official Documents
+- [AngularJS] (https://angularjs.org/)
+- [TypeScript] (http://www.typescriptlang.org/)
+
 ## Recommended Learning Resources (AngularJS)
 
 - [AngularJS Ninja] (http://angularjsninja.com/) - 日本語ブログ
@@ -19,3 +23,7 @@ gulp watch
 ## Recommended Learning Resources (TypeScript)
 
 - TODO: adds something
+
+
+## 単発読み物
+- [AngularJS モダンプラクティス] (http://qiita.com/armorik83/items/5542daed0c408cb9f605) - Angular 2.0 を視野に入れた Angular x TypeScript のベストプラクティス 
