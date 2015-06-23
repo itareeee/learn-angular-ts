@@ -20,6 +20,8 @@
     "gulp": "^3.9.0",
     "gulp-typescript": "^2.7.7",
     "gulp-util": "^3.0.5",
+    "gulp-webserver": "^0.9.1",
+    "run-sequence": "^1.1.1",
     "tsd": "^0.6.3"
   }
 }
