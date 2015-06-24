@@ -38,6 +38,15 @@ $ npm install
 - AngularJS
 - Lodash
 
+### Updating forks
+
+1. Go to pull requests page
+2. Click on 'New Pull Request' button
+3. Click on 'compare across forks'
+4. Set own fork as base fork, set k-italy/learn-angular-ts as head fork
+5. Click on 'Create new pull request' button
+6. Merge
+7. git pull
 
 ## Learning Resources
 
