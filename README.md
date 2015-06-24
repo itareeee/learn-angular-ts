@@ -2,6 +2,24 @@
 To Learn AngularJS with TypeScript
 
 ## Development
+
+### Fork This Repo
+
+```
+// 1. github 上で fork 自分の Repository を作成
+
+// 2. 自分のRepository をローカルにClone
+$ git clone https://github.com/{userName}/learn-angular-ts.git
+
+// 3. Fork元 (kitaly/learn-angular-ts) を別のRemoteServerとして追加
+$ git remote add upstream https://github.com/{userName}/learn-angular-ts.git
+
+// 4. Fork元の変更を取り込みたい場合
+$ git fetch upstream
+$ git merge upstream/master
+```
+(参考)[http://qiita.com/xtetsuji/items/555a1ef19ed21ee42873]
+
 ### Project Structure
 
 ```
