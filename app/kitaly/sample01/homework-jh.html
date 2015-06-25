@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="jh">
+
+<head lang="ja">
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.9.3/lodash.js"></script>
+    <script src="app-jh.js"></script>
+
+    <title>JH Sample01</title>
+
+</head>
+
+<body>
+<div ng-controller="JHController as ctrl">
+    <button type="button" ng-click="ctrl.toggleDisplay()">Click Me</button>
+    <div ng-show="ctrl.displaySection">
+        Change Person:
+        <button type="button" ng-click="ctrl.setName('Person', 'A')">Person A</button>
+        <button type="button" ng-click="ctrl.setName('Person', 'B')">Person B</button>
+    </div>
+
+    <br />
+    Firstname: <input type="text" ng-model="ctrl.first">
+    Lastname: <input type="text" ng-model="ctrl.last">
+    <br/>
+    <br/>
+    Hello, {{ctrl.first}} {{ctrl.last}}
+</div>
+</body>
+
+</html>
