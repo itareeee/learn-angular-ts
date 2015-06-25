@@ -13,6 +13,7 @@ class JHController {
         this.displaySection = !this.displaySection;
     }
 
+
     public setName(first, last) {
         this.first = first;
         this.last = last;
