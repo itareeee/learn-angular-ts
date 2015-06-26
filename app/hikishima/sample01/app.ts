@@ -3,7 +3,7 @@
 class SampleController {
   public first: string;
   public isNameCandidate: boolean;
-  last;
+  public last: string;
 
   constructor($scope) {
     this.first = 'yasuaki';
