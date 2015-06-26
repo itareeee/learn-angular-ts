@@ -8,24 +8,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.9.3/lodash.js"></script>
 
   <title>Daily AngularTS Sample01</title>
-  <script>
-    angular.module('sample', ['ng'])
-      .controller('sample01Controller', function(){
-        this.showNameList = true;
-        this.first = 'Michael';
-        this.last = 'Jackson';
-        var self = this;
-        this.setStaticName = function(first, last){
-          self.first = first;
-          self.last = last;
-        }
-      });
-  </script>
+
+  <script src="app.js"></script>
+
 </head>
 
-<body ng-controller="sample01Controller as c">
+<body ng-controller="Sample01Controller as c">
 
-  <button ng-click="c.showNameList = !c.showNameList">名前リストを表示する</button>
+  <button ng-click="c.changeShowNameList()">名前リストを表示する</button>
 
   <div ng-show="c.showNameList">
     <button ng-click="c.setStaticName('Itaru','Kitagawa')">Kitagara Itaru</button>
@@ -36,7 +26,6 @@
     First Name:<input ng-model="c.first" type="text"/>
     <br/>
     Last Name:<input ng-model="c.last" type="text"/>
-    <br/>
     <br/>
     Hello, {{c.first}} {{c.last}}!
   </div>
