@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="sampleApp">
+
+<head lang="ja">
+  <meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.9.3/lodash.js"></script>
+
+  <script src="app.js"></script>
+  <title>Sample02</title>
+</head>
+
+<body>
+  <h1>Sample02 App</h1>
+  <section ng-controller="Sample02Controller as ctrl">
+
+    <section>
+      <h2>Name</h2>
+      <input type="text" ng-model="ctrl.name"><br/>
+      <p>Plain: {{ ctrl.name }}</p>
+      <p>UpperCase: {{ ctrl.name | uppercase }}</p>
+      <p>LowerCase: {{ ctrl.name | lowercase }}</p>
+    </section>
+
+    <section>
+      <h2>Height</h2>
+      <input type="number" ng-model="ctrl.height"><br/>
+      <p>Plain: {{ ctrl.height | number:0 }}</p>
+      <p>First: {{ ctrl.height | number:1 }}</p>
+      <p>Second: {{ ctrl.height | number:2 }}</p>
+    </section>
+
+    <section>
+      <h2>Birthday</h2>
+      <input type="date" ng-model="ctrl.birthday"><br/>
+      <p>Plain: {{ ctrl.birthday }}</p>
+      <p>yy/MM/dd: {{ ctrl.birthday | date: 'yy/MM/dd' }}</p>
+      <p>yy-MMM-dd: {{ ctrl.birthday | date: 'yy-MMM-dd' }}</p>
+      <p>東海岸: {{ ctrl.birthday | date: 'yy-MM-ddThh:mm' : -4 }}</p>
+
+    </section>
+
+
+  </section>
+</body>
+
+</html>
