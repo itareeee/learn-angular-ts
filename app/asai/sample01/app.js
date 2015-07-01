@@ -1,6 +1,6 @@
-/// <reference path="../../../../typings/tsd.d.ts" />
-var SampleController = (function () {
-    function SampleController($scope) {
+/// <reference path="../../../typings/tsd.d.ts" />
+var Sample01Controller = (function () {
+    function Sample01Controller($scope) {
         var _this = this;
         this.showNameList = function () {
             _this.isDisplayNameList = true;
@@ -16,6 +16,6 @@ var SampleController = (function () {
         this.last = 'Jordan';
         this.isDisplayNameList = true;
     }
-    return SampleController;
+    return Sample01Controller;
 })();
-angular.module('sample', ['ng']).controller('SampleController', SampleController);
+angular.module('sample', ['ng']).controller('SampleController', Sample01Controller);
