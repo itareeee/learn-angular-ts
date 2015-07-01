@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="sample">
+
+<head lang="ja">
+  <meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.9.3/lodash.js"></script>
+
+  <title>SampleXX</title>
+  <script>
+    angular.module('sample', ['ng'])
+      .controller('SampleController', function($scope) {
+      this.firstName = 'aaa';
+      this.midName   = 'bbb';
+      this.lastName  = 'ccc';
+      
+      console.log($scope);
+      console.log(this);
+      
+      var self = this;
+      this.alertFirstName = function(){
+        alert('firstName:' + self.firstName);
+      }
+    })
+  </script>
+</head>
+
+<body>
+<div ng-controller="SampleController as c">
+  First Name: <input type="text" ng-model="c.firstName" ng-focus="c.alertFirstName()">
+  <br>
+  Middle Name: <input type="text" ng-model="c.midName">
+  <br>
+  Last Name: <input type="text" ng-model="c.lastName">
+  <br>
+  
+  Hello {{c.firstName}} {{c.midName}} {{c.lastName}}!
+  <br>
+  Hola 
+  <span ng-bind="c.firstName"></span>
+  <span ng-bind="c.midName"></span>
+  <span ng-bind="c.lastName"></span>
+  </div>
+</body>
+
+</html>
