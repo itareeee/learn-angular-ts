@@ -1,23 +1,41 @@
 <!DOCTYPE html>
-<html ng-app="sample">
+<html ng-app="sampleApp">
 
 <head lang="ja">
   <meta charset="UTF-8">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.9.3/lodash.js"></script>
-  <script src="app.js"></script>
 
-  <title>Sample01</title>
+  <script src="app.js"></script>
+  <title>Sample02</title>
 </head>
 
 <body>
-  <div ng-controller="SampleController as ctrl">
-    First Name: <input type="text" ng-model="ctrl.first" ng-focus="ctrl.alertFirstName()"><br/>
-    Last Name: <input type="text" ng-model="ctrl.last"><br/>
-    <br/>
-    Hello, {{ctrl.first}} {{ctrl.last}}!<br/>
-  </div>
+  <h1>Sample02 App</h1>
+
+  <section>
+    <h2>Filters</h2>
+
+    <section>
+      <h3>Name</h3>
+    </section>
+
+    <section>
+      <h3>Height</h3>
+    </section>
+
+    <section>
+      <h3>Birthday</h3>
+
+    </section>
+
+  </section>
+
+
+  <section>
+    <h2>Repeat</h2>
+  </section>
 </body>
 
 </html>

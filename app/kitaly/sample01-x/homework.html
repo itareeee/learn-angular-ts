@@ -11,20 +11,21 @@
   <script>
     angular.module('sample01', ['ng'])
       .controller('Sample01Controller', function(){
-	this.first = 'Michael';
-	this.last = 'Jordan';
-	this.isSuggestVisible = true;
 
-	var self = this;
-	this.setName = function(first, last){
-	  self.first = first;
-	  self.last = last;
-	}
+      this.first = 'Michael';
+      this.last = 'Jordan';
+      this.isSuggestVisible = true;
 
-	this.toggleSuggestVisibility = function(){
-	  self.isSuggestVisible = !self.isSuggestVisible;
-	}
-      });
+      var self = this;
+      this.setName = function(first, last){
+        self.first = first;
+        self.last = last;
+      }
+
+      this.toggleSuggestVisibility = function(){
+        self.isSuggestVisible = !self.isSuggestVisible;
+      }
+    });
   
   </script>
 
