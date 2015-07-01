@@ -14,27 +14,46 @@
 <body>
   <h1>Sample02 App</h1>
 
-  <section>
+  <section ng-controller="FilterController as ctrl">
     <h2>Filters</h2>
 
     <section>
       <h3>Name</h3>
+      <input type="text" name="name" value="" ng-model="ctrl.name">
+      <br>
+      <span>Plain: {{ctrl.name}}</span><br>
+      <span>Upper: {{ctrl.name | uppercase}}</span><br>
+      <span>Lower: {{ctrl.name | lowercase}}</span><br>
     </section>
 
     <section>
       <h3>Height</h3>
+      <input type="number" ng-model="ctrl.height">
+      <br>
+      <span>Plain: {{ctrl.height}}</span><br>
+      <span>One: {{ctrl.height | number:1}}</span><br>
+      <span>Two: {{ctrl.height | number:2}}</span><br>
+      <span>Default: {{ctrl.height}}</span><br>
     </section>
 
     <section>
       <h3>Birthday</h3>
-
+      <input type="date" ng-model="ctrl.birthday">
+      <br>
+      <span>Plain: {{ctrl.birthday}}</span><br>
+      <span>yy/MM/dd: {{ctrl.birthday | date:'yy/MM/dd'}}</span><br>
+      <span>yy-MMM-dd: {{ctrl.birthday | date:'yy-MMM-dd'}}</span><br>
+      <span>東海岸: {{ctrl.birthday | date:'yy-MM-dd HH:mm': -0400}}</span><br>
     </section>
 
   </section>
 
 
-  <section>
+  <section ng-controller="RepeatController as ctrl">
     <h2>Repeat</h2>
+    <ul>
+      <li ng-repeat="friend in ctrl.friends">{{friend.name}} - {{friend.age}}</li>
+    </ul>
   </section>
 </body>
 

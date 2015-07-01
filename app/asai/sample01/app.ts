@@ -1,6 +1,6 @@
-/// <reference path="../../../../typings/tsd.d.ts" />
+/// <reference path="../../../typings/tsd.d.ts" />
 
-class SampleController {
+class Sample01Controller {
 
   public first: string;
   public last: string;
@@ -27,4 +27,4 @@ class SampleController {
 
 }
 
-angular.module('sample', ['ng']).controller('SampleController', SampleController);
+angular.module('sample', ['ng']).controller('SampleController', Sample01Controller);
