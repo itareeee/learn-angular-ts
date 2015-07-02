@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="sample">
+
+<head lang="ja">
+  <meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.9.3/lodash.js"></script>
+
+  <title>Homework 02 - Asai - Daily AngularTS</title>
+
+  <style type="text/css" media="screen">
+    div + div {
+      margin-top: 2em;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="content" ng-controller="SampleController as ctrl">
+    <div class="invoice">
+      <strong>Invoice:</strong><br>
+      Quantity: <input type="number" ng-model="ctrl.quantity" ng-change="ctrl.calculate();" min="1"><br>
+      Costs: <input type="number" ng-model="ctrl.costs" ng-change="ctrl.calculate();" min="1">
+      <select name="currency" ng-model="ctrl.currency" ng-change="ctrl.calculate();">
+        <option ng-repeat="(key, value) in ctrl.exchangeRates">{{key}}</option>
+      </select>
+    </div>
+
+    <div class="display">
+      <strong>Total:</strong>
+      <span ng-repeat="(key, value) in ctrl.exchangeResults">
+        {{key}}: {{value|currency:''}}
+      </span>
+      <button ng-click="ctrl.pay()">Pay</button>
+    </div>
+    {{ctrl.result}}
+  </section>
+  <script src="app.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
+</html>
