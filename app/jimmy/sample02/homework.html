@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="jhApp2">
+
+<head lang="ja">
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.9.3/lodash.js"></script>
+
+    <script src="app.js"></script>
+    <title>Homework02</title>
+</head>
+
+<body>
+<h1>Sample02 App</h1>
+
+<section ng-controller="MyController as ctrl">
+    <h1>Invoice</h1>
+    Quantity: <input ng-model="ctrl.qty" type="number"><br/>
+    Cost: <input ng-model="ctrl.cost" type="number">
+    <select ng-model="ctrl.currentCurrency">
+        <option ng-repeat="c in ctrl.currencies">{{c}}</option>
+    </select>
+    <br/>
+    <br/>
+    Total:
+    <span ng-repeat="currency in ctrl.currencies">
+        {{currency}}{{ctrl.getCost(currency) | number: 2}}
+    </span>
+
+
+</section>
+</body>
+
+</html>
