@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="sample02HomeworkApp">
+
+<head lang="ja">
+  <meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.9.3/lodash.js"></script>
+
+  <script src="homework.js"></script>
+  <title>Sample02</title>
+</head>
+<body>
+
+  <h1>Sample02 Homework</h1>
+
+  <section ng-controller="FilterController as c">
+
+    <b>Invoice:</b>
+     <div>
+       Quantity: <input type="number" ng-model="c.quantity">
+     </div>
+     <div>
+       Costs: <input type="number" ng-model="c.cost">
+       <select ng-model="c.inCurr">
+         <option ng-repeat="cur in c.currencies">{{cur}}</option>
+       </select>
+     </div>
+     <br/>
+     <div>
+       <b>Total:</b>
+       <br/>
+       <span ng-repeat="cur in c.currencies">
+         {{c.calc(cur) | currency:cur}} <br/>
+       </span>
+     </div>
+
+  </section>
+
+</body>
+</html>

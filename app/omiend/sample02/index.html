@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="sample02App">
+
+<head lang="ja">
+  <meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.9.3/lodash.js"></script>
+
+  <script src="app.js"></script>
+  <title>Sample02</title>
+</head>
+
+<body>
+  <h1>Sample02 App</h1>
+
+  <section ng-controller="FilterController as c">
+    <h2>Filters</h2>
+
+    <section>
+      <h3>Name</h3>
+      <input type="text" ng-model="c.name"></section><br>
+    <span>Plain : {{c.name}}</span><br/>
+    <span>Upper : {{c.name | uppercase}}</span><br/>
+    <span>Lower : {{c.name | lowercase}}</span><br/>
+    </section>
+
+    <section>
+      <h3>Height</h3>
+      <input type="number" ng-model="c.age"></section><br>
+      <span>Plain : {{c.age | number:0}}</span><br/>
+      <span>One   : {{c.age | number:1}}</span><br/>
+      <span>Two   : {{c.age | number:2}}</span><br/>
+    </section>
+
+    <section>
+      <h3>Birthday</h3>
+      <input type="datetime" ng-model="c.birthday"></section><br>
+      <span>Plain : {{c.birthday | date}}</span><br/>
+      <span>yy/MM/dd : {{c.birthday | date: 'yy/MM/dd'}}</span><br/>
+      <span>yy-MMM-dd : {{c.birthday | date: 'yy-MMM-dd'}}</span><br/>
+      <span>東海岸 : {{c.birthday | date: 'yy-MM-ddTHH:mm:ss' : -0400}}</span><br/>
+    </section>
+
+  </section>
+
+
+  <section ng-controller="RepeatController as c">
+    <h2>Repeat</h2>
+    <input type="text" ng-model="c.searchText">
+    <table>
+      <tr ng-repeat="friend in c.friends | orderBy:'age' | filter:c.searchText | limitTo:10" ng-init="c.parentIndex=$index">
+        <td ng-repeat="(key, value) in friend">{{c.parentIndex}} - {{key}} - {{value}}</td>
+      </tr>
+    </table>
+    <table>
+      <tr ng-repeat="friend in c.friends | orderBy:'age' | filter:c.searchText | limitTo:10">
+        <td>{{$index}}</td>
+        <td>{{friend.name | uppercase}}</td>
+        <td>{{friend.age}}</td>
+        <td>{{friend.gender}}</td>
+      </tr>
+    </table>
+  </section>
+</body>
+
+</html>
