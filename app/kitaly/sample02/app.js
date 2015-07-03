@@ -1,11 +1,11 @@
 ///<reference path="../../../typings/tsd.d.ts" />
-var Sample02FilterControllerx = (function () {
-    function Sample02FilterControllerx() {
+var Sample02FilterController = (function () {
+    function Sample02FilterController() {
     }
-    return Sample02FilterControllerx;
+    return Sample02FilterController;
 })();
-var Sample02RepeatControllerx = (function () {
-    function Sample02RepeatControllerx() {
+var Sample02RepeatController = (function () {
+    function Sample02RepeatController() {
         this.friends = [
             { name: 'John', age: 25, gender: 'boy' },
             { name: 'Jessie', age: 30, gender: 'girl' },
@@ -19,6 +19,6 @@ var Sample02RepeatControllerx = (function () {
             { name: 'Samantha', age: 60, gender: 'girl' }
         ];
     }
-    return Sample02RepeatControllerx;
+    return Sample02RepeatController;
 })();
-angular.module('sampleApp', ['ng']).controller('FilterController', Sample02FilterControllerx).controller('RepeatController', Sample02RepeatControllerx);
+angular.module('sampleApp', ['ng']).controller('FilterController', Sample02FilterController).controller('RepeatController', Sample02RepeatController);

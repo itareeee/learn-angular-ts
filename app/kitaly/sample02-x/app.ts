@@ -1,7 +1,7 @@
 ///<reference path="../../../typings/tsd.d.ts" />
 
 
-class Sample02FilterController {
+class Sample02FilterControllerx {
   public name: string;
   public height: number;
   public birthday: Date;
@@ -11,7 +11,7 @@ class Sample02FilterController {
   }
 }
 
-class Sample02RepeatController {
+class Sample02RepeatControllerx {
   public friends = [
     {name:'John', age:25, gender:'boy'},
     {name:'Jessie', age:30, gender:'girl'},
@@ -32,6 +32,6 @@ class Sample02RepeatController {
 
 angular
   .module('sampleApp', ['ng'])
-  .controller('FilterController', Sample02FilterController)
-  .controller('RepeatController', Sample02RepeatController)
+  .controller('FilterController', Sample02FilterControllerx)
+  .controller('RepeatController', Sample02RepeatControllerx)
 ;
