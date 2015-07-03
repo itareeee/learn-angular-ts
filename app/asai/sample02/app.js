@@ -1,11 +1,11 @@
 /// <reference path="../../../typings/tsd.d.ts" />
-var Sample02Controller = (function () {
-    function Sample02Controller($scope) {
+var SampleController = (function () {
+    function SampleController($scope) {
         var _this = this;
         // 金額を計算
         this.calculate = function () {
-            var unit = _this.exchangeRates[_this.currency];
-            var total = _this.quantity * _this.costs;
+            var unit = _this.exchangeRates[_this.data.currency];
+            var total = _this.data.quantity * _this.data.costs;
             var that = _this;
             angular.forEach(_this.exchangeRates, function (val, key) {
                 that.exchangeResults[key] = total * (val / unit);
@@ -22,11 +22,14 @@ var Sample02Controller = (function () {
             'CNY': 6.20
         };
         this.exchangeResults = {};
-        this.quantity = 1;
-        this.costs = 2;
-        this.currency = 'USD';
+        this.data = {
+            quantity: 1,
+            costs: 2,
+            currency: 'USD'
+        };
         this.calculate();
+        console.log(this);
     }
-    return Sample02Controller;
+    return SampleController;
 })();
-angular.module('sample', ['ng']).controller('SampleController', Sample02Controller);
+angular.module('sample', ['ng']).controller('SampleController', SampleController);

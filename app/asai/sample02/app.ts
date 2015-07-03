@@ -1,13 +1,15 @@
 /// <reference path="../../../typings/tsd.d.ts" />
 
-class Sample02Controller {
+class SampleController {
 
-  public quantity: number;
-  public costs: number;
-  public currency: number;
   public result: number; 
   public exchangeRates: Object;
   public exchangeResults: any;
+  public data: {
+    quantity: number;
+    costs: number;
+    currency: string;
+  };
 
   constructor($scope) {
     // set default value
@@ -17,16 +19,19 @@ class Sample02Controller {
       'CNY': 6.20
     };
     this.exchangeResults = {};
-    this.quantity = 1;
-    this.costs = 2;
-    this.currency = 'USD';
+    this.data = {
+      quantity: 1,
+      costs: 2,
+      currency: 'USD'
+    }
     this.calculate();
+    console.log(this);
   }
 
   // 金額を計算
   public calculate = () => {
-    var unit = this.exchangeRates[this.currency];
-    var total = this.quantity * this.costs;
+    var unit = this.exchangeRates[this.data.currency];
+    var total = this.data.quantity * this.data.costs;
     var that = this;
     angular.forEach(this.exchangeRates, function(val, key) {
       that.exchangeResults[key] = total * (val / unit);
@@ -39,4 +44,4 @@ class Sample02Controller {
 
 }
 
-angular.module('sample', ['ng']).controller('SampleController', Sample02Controller);
+angular.module('sample', ['ng']).controller('SampleController', SampleController);
