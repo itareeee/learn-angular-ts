@@ -28,7 +28,6 @@ var SampleController = (function () {
             currency: 'USD'
         };
         this.calculate();
-        console.log(this);
     }
     return SampleController;
 })();

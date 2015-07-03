@@ -25,7 +25,6 @@ class SampleController {
       currency: 'USD'
     }
     this.calculate();
-    console.log(this);
   }
 
   // 金額を計算
