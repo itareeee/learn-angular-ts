@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="sample">
+
+<head lang="ja">
+  <meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.9.3/lodash.js"></script>
+
+  <title>Sample01 - Day 2</title>
+
+  <script type="text/javascript" charset="utf-8">
+  angular.module('sample', ['ng'])
+    .controller('SampleController', ['$scope', function ($scope) {
+      this.first = 'Asai';
+      this.last = 'Masahiko';
+
+      var self = this;
+      this.alertFirstName = function() {
+        console.log('FirstName:' + this.first);
+      }
+  }]);
+  </script>
+
+</head>
+
+<body>
+  <div ng-controller="SampleController as ctrl">
+    First Name: <input type="text" ng-model="ctrl.first" ng-focus="ctrl.alertFirstName()"><br>
+    Last Name: <input type="text" ng-model="ctrl.last"><br>
+    <br/>
+    Hello, {{ctrl.first}} {{ctrl.last}}!
+    <br/>
+    Hello2, <span ng-bind="ctrl.first"></span> <span ng-bind="ctrl.last"></span>...
+  </div>
+</body>
+
+</html>

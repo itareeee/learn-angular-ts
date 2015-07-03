@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="sample">
+
+<head lang="ja">
+  <meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.9.3/lodash.js"></script>
+
+  <title>Homework 01 - Asai - Daily AngularTS</title>
+
+  <style type="text/css" media="screen">
+    div + div {
+      margin-top: 2em;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="content" ng-controller="SampleController as ctrl">
+    <div class="control">
+      <button ng-click="ctrl.hideNameList()" ng-show="ctrl.isDisplayNameList">名前候補を非表示にする</button>
+      <button ng-click="ctrl.showNameList()" ng-hide="ctrl.isDisplayNameList">名前候補を表示にする</button>
+    </div>
+    <div ng-show="ctrl.isDisplayNameList">
+      名前候補:
+      <button ng-click="ctrl.setName('Masahiko', 'Asai')">Masahiko Asai</button>
+      <button ng-click="ctrl.setName('Taro', 'Yamada')">Taro Yamada</button>
+    </div>
+    <div>
+      First Name: <input type="text" ng-model="ctrl.first"><br>
+      Last Name: <input type="text" ng-model="ctrl.last">
+    </div>
+    <div class="display">
+      <p>Hello, {{ctrl.first}} {{ctrl.last}}!</p>    
+    </div>
+  </section>
+  <script src="app.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
+</html>
