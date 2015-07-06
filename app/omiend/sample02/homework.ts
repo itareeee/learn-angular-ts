@@ -26,6 +26,6 @@ class Sample02HomeworkFilterController {
 }
 
 angular
-  .module('sample02HomeworkApp', [])
+  .module('sample02HomeworkApp', ['ng'])
   .controller('FilterController', Sample02HomeworkFilterController)
 ;
