@@ -16,4 +16,4 @@ var Sample02HomeworkFilterController = (function () {
     };
     return Sample02HomeworkFilterController;
 })();
-angular.module('sample02HomeworkApp', []).controller('FilterController', Sample02HomeworkFilterController);
+angular.module('sample02HomeworkApp', ['ng']).controller('FilterController', Sample02HomeworkFilterController);
