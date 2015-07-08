@@ -17,8 +17,13 @@
   <section>
     <h2>Filters</h2>
 
-    <section>
+
+    <section ng-controller="Sample02FilterController as ctrl">
       <h3>Name</h3>
+      <input type="text" ng-model="ctrl.name">
+      <span>{{ ctrl.name }}</span>
+      <span>{{ ctrl.name  }}</span>
+      <span>{{ ctrl.name }}</span>
     </section>
 
     <section>
@@ -27,7 +32,7 @@
 
     <section>
       <h3>Birthday</h3>
-
+      <input type="date">
     </section>
 
   </section>
