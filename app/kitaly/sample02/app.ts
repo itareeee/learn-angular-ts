@@ -14,7 +14,18 @@ class Sample02FilterController {
 
 
 class Sample02RepeatController {
-  public friends = [
+  public searchText: string;
+
+  public friends;
+
+  constructor(MyFriends){
+    this.friends = MyFriends;
+  }
+}
+
+
+angular.module('sampleBase', [])
+  .constant('MyFriends', [
     {name:'John', age:25, gender:'boy'},
     {name:'Jessie', age:30, gender:'girl'},
     {name:'Johanna', age:28, gender:'girl'},
@@ -25,15 +36,12 @@ class Sample02RepeatController {
     {name:'Erika', age:27, gender:'girl'},
     {name:'Patrick', age:40, gender:'boy'},
     {name:'Samantha', age:60, gender:'girl'}
-  ]
+  ])
+;
 
-  constructor(){
+var sampleAppModule = angular.module('sampleApp', ['ng', 'sampleBase']);
 
-  }
-}
-
-angular
-  .module('sampleApp', ['ng'])
+sampleAppModule
   .controller('FilterController', Sample02FilterController)
   .controller('RepeatController', Sample02RepeatController)
 ;
