@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="sampleApp">
+
+<head lang="ja">
+  <meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.9.3/lodash.js"></script>
+
+  <script src="app.js"></script>
+  <title>Sample03</title>
+</head>
+
+<body>
+  <h1>Sample03 App</h1>
+
+  <section ng-controller="RepeatController as ctrl">
+    <h2>{{ctrl.title}}</h2>
+    <table>
+      <tr ng-repeat="friend in ctrl.friends">
+        <td>{{friend.name}}</td>
+        <td>{{friend.age}}</td>
+        <td>{{friend.gender}}</td>
+      </tr>
+    </table>
+  </section>
+</body>
+
+</html>
