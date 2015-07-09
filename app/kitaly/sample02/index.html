@@ -14,27 +14,47 @@
 <body>
   <h1>Sample02 App</h1>
 
-  <section>
+  <section ng-controller="FilterController as ctrl">
     <h2>Filters</h2>
 
     <section>
       <h3>Name</h3>
+      <input type="text" ng-model="ctrl.name"><br/>
+      <span>Plain: {{ ctrl.name }}</span><br/>
+      <span>Upper: {{ ctrl.name | uppercase }}</span><br/>
+      <span>Lower: {{ ctrl.name | lowercase }}</span><br/>
     </section>
 
     <section>
       <h3>Height</h3>
+      <input type="number" ng-model="ctrl.age"><br>
+      Plain: {{ ctrl.age }}<br>
+      One: {{ ctrl.age | number:1 }}<br>
+      Two: {{ ctrl.age | number:2 }}<br>
+      Default: {{ ctrl.age | number }}<br>
     </section>
 
     <section>
       <h3>Birthday</h3>
-
+      <input type="date" ng-model="ctrl.birthday"><br>
+      Plan: {{ctrl.birthday}}<br/>
+      yy/MM/dd: {{ ctrl.birthday | date: 'yy/MM/dd' }}<br>
+      yy-MMM-dd: {{ ctrl.birthday | date: 'yy-MMM-dd' }}<br>
     </section>
 
   </section>
 
 
-  <section>
+  <section ng-controller="RepeatController as ctrl">
     <h2>Repeat</h2>
+    <input type="text" ng-model="ctrl.searchText">
+    <table>
+      <tr ng-repeat="friend in ctrl.friends | orderBy:'age' | filter:ctrl.searchText | limitTo:5" ng-init="parentIndex=$index">
+        <td ng-repeat="(key, value) in friend">
+          {{parentIndex}} - {{$index}} : {{key}} - {{value}}
+        </td>
+      </tr>
+    </table>
   </section>
 </body>
 
