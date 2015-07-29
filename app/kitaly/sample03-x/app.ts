@@ -1,13 +1,13 @@
 ///<reference path="../../../typings/tsd.d.ts" />
 
 
-class FriendsController {
+class XFriendsController {
   public title: string = 'I wanna make friends (><)';
   public friends;
 
   constructor(
     $interval: ng.IIntervalService,
-    friendsService: FriendsService
+    friendsService: XFriendsService
   ){
 
     $interval(() => {
@@ -21,7 +21,7 @@ class FriendsController {
 }
 
 
-class FriendsService {
+class XFriendsService {
   constructor(
     private $http: ng.IHttpService
   ){}
@@ -31,7 +31,7 @@ class FriendsService {
   }
 }
 
-class FriendsServiceMock {
+class XFriendsServiceMock {
   constructor(
     private $q,
     private $timeout
@@ -48,11 +48,11 @@ class FriendsServiceMock {
 }
 
 angular.module('sampleServices', ['ng']) // ng モジュールは省略可能
-  .service('friendsService', ['$http', FriendsService])
-  //.service('friendsService', ['$q', '$timeout', FriendsServiceMock])
+  .service('friendsService', ['$http', XFriendsService])
+  //.service('friendsService', ['$q', '$timeout', XFriendsServiceMock])
 ;
 
 angular
   .module('sampleApp', ['ng', 'sampleServices'])
-  .controller('RepeatController', ['$interval', 'friendsService', FriendsController])
+  .controller('RepeatController', ['$interval', 'friendsService', XFriendsController])
 ;

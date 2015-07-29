@@ -1,6 +1,6 @@
 ///<reference path="../../../typings/tsd.d.ts" />
-var FriendsController = (function () {
-    function FriendsController($interval, friendsService) {
+var XFriendsController = (function () {
+    function XFriendsController($interval, friendsService) {
         var _this = this;
         this.title = 'I wanna make friends (><)';
         $interval(function () {
@@ -10,30 +10,30 @@ var FriendsController = (function () {
             _this.friends = res.data;
         });
     }
-    return FriendsController;
+    return XFriendsController;
 })();
-var FriendsService = (function () {
-    function FriendsService($http) {
+var XFriendsService = (function () {
+    function XFriendsService($http) {
         this.$http = $http;
     }
-    FriendsService.prototype.fetch = function () {
+    XFriendsService.prototype.fetch = function () {
         return this.$http.get('friends.json');
     };
-    return FriendsService;
+    return XFriendsService;
 })();
-var FriendsServiceMock = (function () {
-    function FriendsServiceMock($q, $timeout) {
+var XFriendsServiceMock = (function () {
+    function XFriendsServiceMock($q, $timeout) {
         this.$q = $q;
         this.$timeout = $timeout;
     }
-    FriendsServiceMock.prototype.fetch = function () {
+    XFriendsServiceMock.prototype.fetch = function () {
         var deferred = this.$q.defer();
         this.$timeout(function () {
             deferred.resolve([{ name: 'hoge', age: 123, gender: 'LGBT' }]);
         }, 2000);
         return deferred.promise;
     };
-    return FriendsServiceMock;
+    return XFriendsServiceMock;
 })();
-angular.module('sampleServices', ['ng']).service('friendsService', ['$http', FriendsService]);
-angular.module('sampleApp', ['ng', 'sampleServices']).controller('RepeatController', ['$interval', 'friendsService', FriendsController]);
+angular.module('sampleServices', ['ng']).service('friendsService', ['$http', XFriendsService]);
+angular.module('sampleApp', ['ng', 'sampleServices']).controller('RepeatController', ['$interval', 'friendsService', XFriendsController]);
