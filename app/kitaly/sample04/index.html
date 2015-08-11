@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="sampleApp">
+
+<head lang="ja">
+  <meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.9.3/lodash.js"></script>
+
+  <script src="app.js"></script>
+  <title>Sample04</title>
+
+  <style>
+    .combobox ul {
+      background-color: black;
+      color: white;
+      width: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Sample04 App</h1>
+
+  <div ng-init="statuses = ['未所有', '未読', '読中', '読了'];">
+    ConboBox外の"Status": {{status}}
+  </div>
+  ステータス:
+  <combo-box selected-item="status" all-items="statuses"></combo-box>
+</body>
+
+</html>
