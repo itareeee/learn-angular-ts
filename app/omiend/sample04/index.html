@@ -17,6 +17,18 @@
   ステータス
   <combo-box selected-item="status" all-items="statuses"></combo-box>
 
+  <div ng-controller="notificationController as ctrl">
+    <div ng-repeat="item in ctrl.items">
+      <notification timeout="5000" enable="item.enableMessage">
+        {{item.message}} ({{item.time | date:'HH:mm:ss'}})
+      </notification>
+    </div>
+
+    <input type="text" ng-model="ctrl.message">
+    <button ng-click="ctrl.addMessage(ctrl.message)">add</button>
+
+  </div>
+
 </body>
 
 </html>
