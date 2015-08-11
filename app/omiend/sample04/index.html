@@ -8,22 +8,15 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.9.3/lodash.js"></script>
 
   <script src="app.js"></script>
-  <title>Sample03</title>
+  <title>Sample04</title>
 </head>
 
 <body>
-  <h1>Sample03 App</h1>
+  <h1>Sample04 App</h1>
+  <div ng-init="statuses = ['未所有', '未読', '読中', '読了']"></div>
+  ステータス
+  <combo-box selected-item="status" all-items="statuses"></combo-box>
 
-  <section ng-controller="RepeatController as ctrl">
-    <h2>{{ctrl.title}}</h2>
-    <table>
-      <tr ng-repeat="friend in ctrl.friends">
-        <td>{{friend.name}}</td>
-        <td>{{friend.age}}</td>
-        <td>{{friend.gender}}</td>
-      </tr>
-    </table>
-  </section>
 </body>
 
 </html>
