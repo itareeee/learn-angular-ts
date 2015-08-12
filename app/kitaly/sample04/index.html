@@ -16,17 +16,56 @@
       color: white;
       width: 100px;
     }
+    .notification {
+      background-color: black;
+      color: white;
+    }
+    .notification a {
+      float: right;
+    }
+    section {
+      margin-bottom: 30px;
+    }
   </style>
 </head>
 
 <body>
   <h1>Sample04 App</h1>
 
-  <div ng-init="statuses = ['未所有', '未読', '読中', '読了'];">
-    ConboBox外の"Status": {{status}}
-  </div>
-  ステータス:
-  <combo-box selected-item="status" all-items="statuses"></combo-box>
+  <!-- Combobox -->
+  <h2>Combo Box</h2>
+  <section>
+    <div ng-init="statuses = ['未所有', '未読', '読中', '読了']; status='初期値'">
+      ConboBox外の"Status": {{status}}
+    </div>
+    ステータス:
+    <combo-box selected-item="status" all-items="statuses"></combo-box>
+  </section>
+
+
+  <!-- Notification -->
+  <h2>Notification</h2>
+  <section>
+    <div ng-controller="notificationController as ctrl">
+
+      <div ng-repeat="item in ctrl.items">
+        <notification timeout="50000" enable="item.enableMessage">
+          <p>{{item.message}} ({{item.time | date:'HH:mm:ss'}})</p>
+        </notification>
+      </div>
+
+      <input type="text" ng-model="ctrl.message">
+      <button ng-click="ctrl.addMessage(ctrl.message)">add</button>
+    </div>
+  </section>
+
+  <script type="text/ng-template" id="/sample04/notification.html">
+    <div ng-show="enable" class="notification">
+      <a href="" ng-click="close()">閉じる</a>
+      <div ng-transclude></div>
+    </div>
+  </script>
+
 </body>
 
 </html>

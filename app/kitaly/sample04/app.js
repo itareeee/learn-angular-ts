@@ -1,5 +1,9 @@
 ///<reference path="../../../typings/tsd.d.ts" />
-angular.module('sampleApp', []).directive('comboBox', function () {
+var app = angular.module('sampleApp', []);
+/**
+ * 夕日本 P.275~
+ */
+app.directive('comboBox', function () {
     return {
         scope: {
             selectedItem: '=',
@@ -23,3 +27,50 @@ angular.module('sampleApp', []).directive('comboBox', function () {
         }
     };
 });
+/**
+ * 夕日本 P.277~
+ */
+var NotificationController = (function () {
+    function NotificationController() {
+        this.items = [];
+    }
+    NotificationController.prototype.addMessage = function (msg) {
+        this.items.push({
+            message: msg,
+            enableMessage: true,
+            time: new Date()
+        });
+    };
+    return NotificationController;
+})();
+app.controller('notificationController', NotificationController).directive('notification', ['$timeout', function ($timeout) {
+    return {
+        scope: {
+            enable: '=',
+            timeout: '='
+        },
+        restrict: 'E',
+        transclude: true,
+        replace: true,
+        templateUrl: '/sample04/notification.html',
+        link: function (scope) {
+            scope.close = function () {
+                scope.enable = false;
+            };
+            var promise;
+            scope.$watch('enable', function (newVal) {
+                if (newVal) {
+                    promise = $timeout(function () {
+                        scope.close();
+                    }, scope.timeout);
+                }
+                else {
+                    if (promise) {
+                        $timeout.cancel(promise);
+                        promise = null;
+                    }
+                }
+            });
+        }
+    };
+}]);
