@@ -94,3 +94,68 @@ app
       }
     }
   }]);
+
+app
+  .directive('rating', [function(){
+    return {
+      restrict: 'E',
+      require: 'ngModel',
+      scope: {
+        max: '=externalMax', // =, &, @ が 使える
+        readonly: '='
+      },
+
+      link: function(scope, element, attrs, ngModelCtrl: ng.INgModelController){
+
+        // scope の値が変化したら再描画
+        ngModelCtrl.$render = function(){
+          updateRate(ngModelCtrl.$viewValue);
+        }
+
+        // ngModel にバインドされた値に応じて星を描画
+        function updateRate(rate){
+          angular.forEach(element.children(), function(child){
+            angular.element(child).off('click'); //メモリリーク対策（無くても動く)
+          });
+          element.empty();
+
+          for(var i =0; i <scope.max; i++){
+            var span = angular.element('<span></span>');
+            var star = i < rate ? '★' : '☆'; // 黒星 + 白星
+            span.text(star);
+
+            //編集可能な場合の処理
+            if(!scope.readonly){
+              span.addClass('changeable'); //Style当てないと特に意味無いよ
+
+              (function(){
+                var count = i + 1;
+                span.on('click', function(){
+
+                  // クリックされた箇所に応じて星の数の再描画
+                  scope.$apply(function(){
+                    ngModelCtrl.$setViewValue(count);
+                    updateRate(count);
+                  });
+                });
+              })();
+            }
+            element.append(span);
+          }
+
+        }
+
+        // scope の値が範囲外だった場合は、範囲内に収まるように変換する
+        ngModelCtrl.$formatters.push(function(rate){
+          if(rate < 0){
+            return 0;
+          } else if (rate > scope.max){
+            return scope.max;
+          } else {
+            return rate;
+          }
+        })
+        ;
+      }
+    }
+  }]);
