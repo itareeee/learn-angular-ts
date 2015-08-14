@@ -11,6 +11,8 @@ class Sample02FilterController {
   }
 }
 
+
+
 class Sample02RepeatController {
   public searchText: string;
 

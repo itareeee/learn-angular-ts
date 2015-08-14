@@ -17,7 +17,8 @@
   <section ng-controller="FilterController as ctrl">
     <h2>Filters</h2>
 
-    <section>
+
+    <section ng-controller="Sample02FilterController as ctrl">
       <h3>Name</h3>
       <input type="text" ng-model="ctrl.name"><br/>
       <span>Plain: {{ ctrl.name }}</span><br/>
