@@ -201,7 +201,7 @@ class StarRateDirective implements ng.IDirective {
 
 class StarRateDController {
   private max;
-  private redonly;
+  private readonly;
   private ngModelController;
 
   public getStar(starIndex){
@@ -210,7 +210,9 @@ class StarRateDController {
   }
 
   public clickStar(starIndex){
-    this.ngModelController.$setViewValue(starIndex + 1);
+    if(!this.readonly){
+      this.ngModelController.$setViewValue(starIndex + 1);
+    }
   }
 }
 

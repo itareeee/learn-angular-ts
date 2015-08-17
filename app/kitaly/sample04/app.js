@@ -183,7 +183,9 @@ var StarRateDController = (function () {
         return ((starIndex + 1) > starNum) ? '☆' : '★';
     };
     StarRateDController.prototype.clickStar = function (starIndex) {
-        this.ngModelController.$setViewValue(starIndex + 1);
+        if (!this.readonly) {
+            this.ngModelController.$setViewValue(starIndex + 1);
+        }
     };
     return StarRateDController;
 })();
