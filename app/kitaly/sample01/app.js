@@ -22,4 +22,5 @@ var SampleController = (function () {
     };
     return SampleController;
 })();
-angular.module('sample', ['ng']).controller('SampleController', SampleController);
+angular.module('sample', ['ng'])
+    .controller('SampleController', SampleController);

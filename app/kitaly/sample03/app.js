@@ -22,6 +22,10 @@ var FriendsService = (function () {
     };
     return FriendsService;
 })();
-angular.module('sampleServices', []).service('friendsService', ['$http', FriendsService]).service('hogeService', function ($http, $location) {
+angular.module('sampleServices', [])
+    .service('friendsService', ['$http', FriendsService])
+    .service('hogeService', function ($http, $location) {
 });
-angular.module('sampleApp', ['ng', 'sampleServices']).controller('RepeatController', ['$timeout', 'friendsService', FriendsController]);
+angular
+    .module('sampleApp', ['ng', 'sampleServices'])
+    .controller('RepeatController', ['$timeout', 'friendsService', FriendsController]);
