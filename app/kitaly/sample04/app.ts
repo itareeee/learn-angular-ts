@@ -95,6 +95,9 @@ app
     }
   }]);
 
+/**
+ * 夕日本 P.279
+ */
 app
   .directive('rating', [function(){
     return {
@@ -105,15 +108,32 @@ app
         readonly: '='
       },
 
-      link: function(scope, element, attrs, ngModelCtrl: ng.INgModelController){
+      link: function(scope, element, attrs, ngModelCtrl){
+
+        // scope の値が範囲外だった場合は、範囲内に収まるように変換する
+        ngModelCtrl.$formatters.push(function(rate){
+          console.log('formatter');
+          if(rate < 0){
+            return 0;
+          } else if (rate > scope.max){
+            return scope.max; //10まで
+          } else {
+            return rate;
+          }
+        });
 
         // scope の値が変化したら再描画
         ngModelCtrl.$render = function(){
+          console.log('render');
           updateRate(ngModelCtrl.$viewValue);
         }
 
+
         // ngModel にバインドされた値に応じて星を描画
         function updateRate(rate){
+
+          console.log('update rate');
+
           angular.forEach(element.children(), function(child){
             angular.element(child).off('click'); //メモリリーク対策（無くても動く)
           });
@@ -145,17 +165,54 @@ app
 
         }
 
-        // scope の値が範囲外だった場合は、範囲内に収まるように変換する
-        ngModelCtrl.$formatters.push(function(rate){
-          if(rate < 0){
-            return 0;
-          } else if (rate > scope.max){
-            return scope.max;
-          } else {
-            return rate;
-          }
-        })
-        ;
       }
     }
   }]);
+
+
+/**
+ * Rating ディレクティブ をリファクタしてみた
+ */
+class StarRateDirective implements ng.IDirective {
+  replace = true;
+  template = (element, attrs) => {
+    var max = parseInt(attrs.max);
+    var stars = [];
+    for(let i = 0; i < max; i++){
+      stars.push(`<span ng-click="ctrl.clickStar(${i})">{{ ctrl.getStar(${i}) }}</span>`);
+    }
+    return '<span>' + stars.join('') + '</span>';
+  };
+
+  controller = StarRateDController;
+  controllerAs = 'ctrl';
+  scope = {};
+  bindToController = {
+    max: '=',
+    readonly: '='
+  }
+
+  require = ['starRate', 'ngModel'];
+  link = ($scope, elmenet, attrs, controllers) => {
+    let [selfCtrl, ngModelCtrl] = controllers;
+    selfCtrl.ngModelController = ngModelCtrl; 
+  }
+}
+
+class StarRateDController {
+  private max;
+  private redonly;
+  private ngModelController;
+
+  public getStar(starIndex){
+    let starNum = this.ngModelController ? this.ngModelController.$modelValue : 0; 
+    return ((starIndex + 1) > starNum) ? '☆' : '★'; 
+  }
+
+  public clickStar(starIndex){
+    this.ngModelController.$setViewValue(starIndex + 1);
+  }
+}
+
+app
+  .directive('starRate', () => new StarRateDirective());

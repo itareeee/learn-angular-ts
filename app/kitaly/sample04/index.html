@@ -68,11 +68,17 @@
 
   <!-- Rating -->
   <h2>Rating</h2>
-  <section>
+  <section >
     <input type="number" ng-model="rate">
     <rating ng-model="rate" external-max="5" ></rating>
   </section>
 
+  <!-- StarRate -->
+  <h2>StarRate</h2>
+  <section>
+    <input type="number" ng-model="starNum">
+    <star-rate ng-model="starNum" max="10"></star-rate>
+  </section>
 </body>
 
 </html>
