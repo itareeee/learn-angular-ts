@@ -10,7 +10,8 @@ var Sample02RepeatController = (function () {
     }
     return Sample02RepeatController;
 })();
-angular.module('sampleBase', []).constant('MyFriends', [
+angular.module('sampleBase', [])
+    .constant('MyFriends', [
     { name: 'John', age: 25, gender: 'boy' },
     { name: 'Jessie', age: 30, gender: 'girl' },
     { name: 'Johanna', age: 28, gender: 'girl' },
@@ -23,4 +24,6 @@ angular.module('sampleBase', []).constant('MyFriends', [
     { name: 'Samantha', age: 60, gender: 'girl' }
 ]);
 var sampleAppModule = angular.module('sampleApp', ['ng', 'sampleBase']);
-sampleAppModule.controller('FilterController', Sample02FilterController).controller('RepeatController', Sample02RepeatController);
+sampleAppModule
+    .controller('FilterController', Sample02FilterController)
+    .controller('RepeatController', Sample02RepeatController);

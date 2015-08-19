@@ -18,7 +18,7 @@
   "homepage": "https://github.com/k-italy/learn-angular-ts",
   "dependencies": {
     "gulp": "^3.9.0",
-    "gulp-typescript": "^2.7.7",
+    "gulp-typescript": "^2.8.0",
     "gulp-util": "^3.0.5",
     "gulp-webserver": "^0.9.1",
     "run-sequence": "^1.1.1",

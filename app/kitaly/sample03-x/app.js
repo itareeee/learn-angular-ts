@@ -35,5 +35,8 @@ var XFriendsServiceMock = (function () {
     };
     return XFriendsServiceMock;
 })();
-angular.module('sampleServices', ['ng']).service('friendsService', ['$http', XFriendsService]);
-angular.module('sampleApp', ['ng', 'sampleServices']).controller('RepeatController', ['$interval', 'friendsService', XFriendsController]);
+angular.module('sampleServices', ['ng']) // ng モジュールは省略可能
+    .service('friendsService', ['$http', XFriendsService]);
+angular
+    .module('sampleApp', ['ng', 'sampleServices'])
+    .controller('RepeatController', ['$interval', 'friendsService', XFriendsController]);

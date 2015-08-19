@@ -31,5 +31,8 @@ var Homework03Service = (function () {
     };
     return Homework03Service;
 })();
-angular.module('sampleServices', ['ng']).service('friendsService', ['$http', HomeWork03Controller]);
-angular.module('sampleApp', ['ng', 'sampleServices']).controller('RepeatController', ['$timeout', 'friendsService', Homework03Service]);
+angular.module('sampleServices', ['ng']) // ng モジュールは省略可能
+    .service('friendsService', ['$http', HomeWork03Controller]);
+angular
+    .module('sampleApp', ['ng', 'sampleServices'])
+    .controller('RepeatController', ['$timeout', 'friendsService', Homework03Service]);
