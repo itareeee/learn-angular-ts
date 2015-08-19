@@ -1,44 +1,50 @@
 ///<reference path="../../../typings/tsd.d.ts" />
 
 
-class FriendsController {
-  public title:string = 'I wanna make friends (><)';
-  public friends = [{name: 'hoge', age: 123, gender: 'LGBT'}];
+module kitaly.sample03 {
+  
+  class FriendsController {
+    public title:string = 'I wanna make friends (><)';
+    public friends = [{name: 'hoge', age: 123, gender: 'LGBT'}];
 
-  constructor(
-    $timeout: ng.ITimeoutService,
-    friendsService: FriendsService
-  ) {
-    $timeout(() => {
-      this.title = "(^^)/ I've made some friends (^^)/";
-    }, 2000);
+    constructor(
+      $timeout: ng.ITimeoutService,
+      friendsService: FriendsService
+    ) {
+      $timeout(() => {
+	this.title = "(^^)/ I've made some friends (^^)/";
+      }, 2000);
 
-    friendsService.fetch().then((res) => {
-      this.friends = res.data;
-    });
+      friendsService.fetch().then((res) => {
+	this.friends = res.data;
+      });
+    }
+
   }
 
-}
+  class FriendsService {
+    constructor(
+      private $http
+    ){}
+
+    public fetch(): ng.IHttpPromise<Array<any>> {
+      return this.$http.get('friends.json');
+    }
+  }
 
 
-class FriendsService {
-  constructor(
-    private $http
-  ){}
+  export function init(){
+    angular.module('sample03Services', [])
+      .service('friendsService', ['$http', FriendsService])
+    ;
 
-  public fetch(): ng.IHttpPromise<Array<any>> {
-    return this.$http.get('friends.json');
+    angular
+      .module('sample03App', ['ng', 'sample03Services'])
+      .controller('repeatController', ['$timeout', 'friendsService', FriendsController])
+    ;
   }
 }
 
-angular.module('sampleServices', [])
-  .service('friendsService', ['$http', FriendsService])
+kitaly.sample03.init();
 
-  .service('hogeService', function($http, $location){
 
-  })
-
-angular
-  .module('sampleApp', ['ng', 'sampleServices'])
-  .controller('RepeatController', ['$timeout', 'friendsService', FriendsController])
-;
