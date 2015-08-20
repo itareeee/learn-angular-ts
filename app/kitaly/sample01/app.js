@@ -17,7 +17,7 @@ var kitaly;
             };
             return SampleController;
         })();
-        angular.module('sampleApp01', ['ng'])
-            .controller('sampleController', SampleController);
+        angular.module('sampleApp01', ['ng']).controller('sampleController', SampleController);
     })(sample01 = kitaly.sample01 || (kitaly.sample01 = {}));
 })(kitaly || (kitaly = {}));
+//# sourceMappingURL=app.js.map

@@ -14,8 +14,7 @@ var kitaly;
             }
             return Sample02RepeatController;
         })();
-        angular.module('sampleBase', [])
-            .constant('MyFriends', [
+        angular.module('sampleBase', []).constant('MyFriends', [
             { name: 'John', age: 25, gender: 'boy' },
             { name: 'Jessie', age: 30, gender: 'girl' },
             { name: 'Johanna', age: 28, gender: 'girl' },
@@ -28,8 +27,7 @@ var kitaly;
             { name: 'Samantha', age: 60, gender: 'girl' }
         ]);
         var sampleAppModule = angular.module('sampleApp02', ['ng', 'sampleBase']);
-        sampleAppModule
-            .controller('filterController', Sample02FilterController)
-            .controller('repeatController', Sample02RepeatController);
+        sampleAppModule.controller('filterController', Sample02FilterController).controller('repeatController', Sample02RepeatController);
     })(sample02 = kitaly.sample02 || (kitaly.sample02 = {}));
 })(kitaly || (kitaly = {}));
+//# sourceMappingURL=app.js.map

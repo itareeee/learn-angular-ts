@@ -27,13 +27,11 @@ var kitaly;
             return FriendsService;
         })();
         function init() {
-            angular.module('sample03Services', [])
-                .service('friendsService', ['$http', FriendsService]);
-            angular
-                .module('sample03App', ['ng', 'sample03Services'])
-                .controller('repeatController', ['$timeout', 'friendsService', FriendsController]);
+            angular.module('sample03Services', []).service('friendsService', ['$http', FriendsService]);
+            angular.module('sample03App', ['ng', 'sample03Services']).controller('repeatController', ['$timeout', 'friendsService', FriendsController]);
         }
         sample03.init = init;
     })(sample03 = kitaly.sample03 || (kitaly.sample03 = {}));
 })(kitaly || (kitaly = {}));
 kitaly.sample03.init();
+//# sourceMappingURL=app.js.map
