@@ -62,14 +62,88 @@ module kitaly.sample06x {
 module kitaly.sample06 {
 
 
-  class TabSetDirective implements ng.IDirective{}
-  class TabSetDController {}
-  class TabDirective {}
-  
+  /**
+   * tabディレクティブの IsolateScope の型
+   */
+  interface TabScope extends ng.IScope {
+    header: string;
+    isActive: boolean;
+  }
+
+
+  /**
+   * 親Directive
+   */
+  class TabSetDirective implements ng.IDirective{
+    restrict = 'E';
+    template = `
+      <select ng-model="ctrl.selectedTab" ng-options="tab.header for tab in ctrl.tabs">
+      </select>
+      <div ng-transclude></div>`;
+    transclude = true;
+
+    controller = TabSetDController;
+    controllerAs = 'ctrl';
+    scope = {};
+  }
+
+  /**
+   * 親Directive のController
+   */
+  class TabSetDController {
+    tabs: Array<TabScope> = [];
+    selectedTab: TabScope;
+
+    constructor($scope){
+      this.initTabSelectionWatch($scope);
+    }
+
+    private initTabSelectionWatch($scope): void {
+      $scope.$watch(() => {
+        return this.selectedTab;
+
+      }, (selected: TabScope) => {
+        if (selected) {
+          this.tabs.forEach(tab => {
+            tab.isActive = tab.header == selected.header;
+          })
+        }
+      });
+    }
+
+    addTab(tab: TabScope): void {
+      this.tabs.push(tab);
+    }
+  }
+
+
+  /**
+   * 子Directive
+   */
+  class TabDirective implements ng.IDirective {
+    restrict = 'E';
+    scope = {};
+    template = `<div ng-show="isActive"> <div ng-transclude></div></div>`;
+    transclude = true;
+    require = '^tabSet'
+
+    link = (scope: TabScope, element, attrs, tabSetCtrl: TabSetDController) => {
+      scope.header = attrs.header;
+      tabSetCtrl.addTab(scope);
+    };
+  }
+
+
+  /**
+   * Angularへのコンポーネント登録
+   */
   export function init(){
-    //Init Process
+    angular.module('sample06App')
+      .directive('tabSet', () => new TabSetDirective())
+      .directive('tab', () => new TabDirective())
+    ;
   }
 }
 
-kitaly.sample06.init();
 kitaly.sample06x.init();
+kitaly.sample06.init();
