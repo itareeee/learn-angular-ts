@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="sample04App">
+<html ng-app="sample05App">
 
 <head lang="ja">
   <meta charset="UTF-8">
@@ -8,7 +8,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.9.3/lodash.js"></script>
 
   <script src="app.js"></script>
-  <title>Sample04</title>
+  <title>Sample05</title>
 
   <style>
     .combobox ul {
@@ -30,7 +30,7 @@
 </head>
 
 <body>
-  <h1>Sample04 App</h1>
+  <h1>Sample05 App</h1>
 
   <!-- Combobox -->
   <h2>Combo Box</h2>
@@ -49,7 +49,7 @@
     <div ng-controller="notificationController as ctrl">
 
       <div ng-repeat="item in ctrl.items">
-        <notification timeout="50000" enable="item.enableMessage">
+        <notification timeout="5000" enable="item.enableMessage">
           <p>{{item.message}} ({{item.time | date:'HH:mm:ss'}})</p>
         </notification>
       </div>
@@ -59,20 +59,13 @@
     </div>
   </section>
 
-  <script type="text/ng-template" id="/sample04/notification.html">
-    <div ng-show="enable" class="notification">
-      <a href="" ng-click="close()">閉じる</a>
-      <div ng-transclude></div>
-    </div>
-  </script>
 
-  <!-- Rating -->
-  <h2>Rating</h2>
-  <section >
-    <input type="number" ng-model="rate">
-    <rating ng-model="rate" external-max="5" ></rating>
+  <!-- StarRate -->
+  <h2>StarRate</h2>
+  <section>
+    <input type="number" ng-model="starNum">
+    <rating ng-model="starNum" max="externalScope.hoge" readonly="true"></rating>
   </section>
-
 </body>
 
 </html>
