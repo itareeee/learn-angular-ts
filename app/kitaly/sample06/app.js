@@ -3,6 +3,9 @@ var kitaly;
 (function (kitaly) {
     var sample06x;
     (function (sample06x) {
+        /**
+         * 夕日本 P.260 TabSet & Tab Directives
+         */
         function init() {
             angular
                 .module('sample06App', ['ng'])
@@ -21,7 +24,7 @@ var kitaly;
                         '<div ng-transclude></div>',
                     controller: 'tabSetXController',
                     transclude: true,
-                    link: function (scope, element, attrs, tabSetCtrl) {
+                    link: function (scope) {
                         scope.$watch('selectedTab', function (selectedTab) {
                             if (selectedTab) {
                                 angular.forEach(scope.tabs, function (tab) {
