@@ -21,4 +21,7 @@ var OmiendSample02RepeatController = (function () {
     }
     return OmiendSample02RepeatController;
 })();
-angular.module('sample02App', ['ng']).controller('FilterController', OmiendSample02FilterController).controller('RepeatController', OmiendSample02RepeatController);
+angular
+    .module('sample02App', ['ng'])
+    .controller('FilterController', OmiendSample02FilterController)
+    .controller('RepeatController', OmiendSample02RepeatController);

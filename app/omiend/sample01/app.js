@@ -14,4 +14,5 @@ var Sample01Controller = (function () {
     };
     return Sample01Controller;
 })();
-angular.module('sample', ['ng']).controller('Sample01Controller', Sample01Controller);
+angular.module('sample', ['ng'])
+    .controller('Sample01Controller', Sample01Controller);
