@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="sample06App">
+
+<head lang="ja">
+  <meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.9.3/lodash.js"></script>
+
+  <script src="app.js"></script>
+  <title>Sample06</title>
+
+  <style>
+    .combobox ul {
+      background-color: black;
+      color: white;
+      width: 100px;
+    }
+    .notification {
+      background-color: black;
+      color: white;
+    }
+    .notification a {
+      float: right;
+    }
+    section {
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Sample06 App</h1>
+
+  <tab-set-x>
+    <tab-x header="header1">tab1</tab-x>
+    <tab-x header="header2">tab2</tab-x>
+    <tab-x header="header3">tab3</tab-x>
+  </tab-set-x>
+
+  <h2>Sample06</h2>
+  <tab-set>
+    <tab header="header1">tab1</tab>
+    <tab header="header2">tab2</tab>
+    <tab header="header3">tab3</tab>
+  </tab-set>
+</body>
+
+</html>
