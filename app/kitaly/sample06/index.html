@@ -30,12 +30,12 @@
 </head>
 
 <body>
-  <h1>Sample06 App</h1>
+  <h1 ng-init="hoge = 'abc'">Sample06 App</h1>
 
   <tab-set-x>
-    <tab-x header="header1">tab1</tab-x>
-    <tab-x header="header2">tab2</tab-x>
-    <tab-x header="header3">tab3</tab-x>
+    <tab-x header="header1">tab1 {{ hoge }} </tab-x>
+    <tab-x header="header2">tab2 {{ hoge }}</tab-x>
+    <tab-x header="header3">tab3 {{ hoge }}</tab-x>
   </tab-set-x>
 
   <tab-set>

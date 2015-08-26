@@ -39,10 +39,11 @@ var kitaly;
                 return {
                     restrict: 'E',
                     scope: {},
-                    template: '<div ng-show="isActive"> <div ng-transclude></div></div>',
+                    template: '<div ng-show="isActive"> divHoge:{{ hoge }} <div ng-transclude></div></div>',
                     require: '^tabSetX',
                     transclude: true,
                     link: function (scope, element, attrs, tabSetCtrl) {
+                        scope.hoge = 'insideHoge';
                         scope.header = attrs.header;
                         tabSetCtrl.addTab(scope);
                     }
@@ -58,6 +59,7 @@ var kitaly;
     (function (sample06) {
         /**
          * 親Directive
+         * NOTE: DDO?
          */
         var TabSetDirective = (function () {
             function TabSetDirective() {
@@ -75,12 +77,14 @@ var kitaly;
          */
         var TabSetDController = (function () {
             function TabSetDController($scope) {
+                this.$scope = $scope;
                 this.tabs = [];
-                this.initTabSelectionWatch($scope);
+                this.initTabSelectionWatch();
             }
-            TabSetDController.prototype.initTabSelectionWatch = function ($scope) {
+            TabSetDController.prototype.initTabSelectionWatch = function () {
                 var _this = this;
-                $scope.$watch(function () {
+                // NOTE: $scope.$watch('ctrl.selectedTab')
+                this.$scope.$watch(function () {
                     return _this.selectedTab;
                 }, function (selected) {
                     if (selected) {
@@ -101,12 +105,13 @@ var kitaly;
         var TabDirective = (function () {
             function TabDirective() {
                 this.restrict = 'E';
-                this.scope = {};
                 this.template = "<div ng-show=\"isActive\"> <div ng-transclude></div></div>";
-                this.transclude = true;
+                this.transclude = true; // NOTE: transclude
                 this.require = '^tabSet';
+                this.scope = {
+                    header: '@' //NOTE: 文字列
+                };
                 this.link = function (scope, element, attrs, tabSetCtrl) {
-                    scope.header = attrs.header;
                     tabSetCtrl.addTab(scope);
                 };
             }

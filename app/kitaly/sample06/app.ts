@@ -44,11 +44,12 @@ module kitaly.sample06x {
         return {
           restrict: 'E',
           scope: {},
-          template: '<div ng-show="isActive"> <div ng-transclude></div></div>',
+          template: '<div ng-show="isActive"> divHoge:{{ hoge }} <div ng-transclude></div></div>',
           require: '^tabSetX',
           transclude: true,
 
           link: function(scope: any, element, attrs, tabSetCtrl) {
+            scope.hoge = 'insideHoge';
             scope.header = attrs.header;
             tabSetCtrl.addTab(scope);
           }
@@ -73,6 +74,7 @@ module kitaly.sample06 {
 
   /**
    * 親Directive
+   * NOTE: DDO?
    */
   class TabSetDirective implements ng.IDirective{
     restrict = 'E';
@@ -94,12 +96,16 @@ module kitaly.sample06 {
     tabs: Array<TabScope> = [];
     selectedTab: TabScope;
 
-    constructor($scope){
-      this.initTabSelectionWatch($scope);
+    constructor(
+      private $scope
+    ){
+      this.initTabSelectionWatch();
     }
 
-    private initTabSelectionWatch($scope): void {
-      $scope.$watch(() => {
+    private initTabSelectionWatch(): void {
+
+      // NOTE: $scope.$watch('ctrl.selectedTab')
+      this.$scope.$watch(() => {
         return this.selectedTab;
 
       }, (selected: TabScope) => {
@@ -111,7 +117,7 @@ module kitaly.sample06 {
       });
     }
 
-    addTab(tab: TabScope): void {
+    public addTab(tab: TabScope): void {
       this.tabs.push(tab);
     }
   }
@@ -122,13 +128,14 @@ module kitaly.sample06 {
    */
   class TabDirective implements ng.IDirective {
     restrict = 'E';
-    scope = {};
     template = `<div ng-show="isActive"> <div ng-transclude></div></div>`;
-    transclude = true;
-    require = '^tabSet'
+    transclude = true; // NOTE: transclude
+    require = '^tabSet';
+    scope = {
+      header: '@' //NOTE: 文字列
+    }
 
     link = (scope: TabScope, element, attrs, tabSetCtrl: TabSetDController) => {
-      scope.header = attrs.header;
       tabSetCtrl.addTab(scope);
     };
   }
