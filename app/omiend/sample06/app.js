@@ -1,19 +1,20 @@
 ///<reference path="../../../typings/tsd.d.ts" />
-var kitaly;
-(function (kitaly) {
-    var sample06x;
-    (function (sample06x) {
+var omiend;
+(function (omiend) {
+    var sample06zz;
+    (function (sample06zz) {
         function init() {
+            var _this = this;
             angular.module('sample06App', ['ng']).controller('tabSetXController', function ($scope) {
-                this.tabs = $scope.tabs = [];
-                this.addTab = function (tab) {
+                _this.tabs = $scope.tabs = [];
+                _this.addTab = function (tab) {
                     this.tabs.push(tab);
                 };
             }).directive('tabSetX', function () {
                 return {
                     restrict: 'E',
                     scope: {},
-                    template: '<select ng-model="selectedTab" ng-options="tab.header for tab in tabs"> ' + '</select>' + '<div ng-transclude></div>',
+                    template: '<select ng-model="selectedTab" ng-options="tab.header for tab in tabs"></select>' + '<div ng-transclude></div>',
                     controller: 'tabSetXController',
                     transclude: true,
                     link: function (scope, element, attrs, tabSetCtrl) {
@@ -40,13 +41,13 @@ var kitaly;
                 };
             });
         }
-        sample06x.init = init;
-    })(sample06x = kitaly.sample06x || (kitaly.sample06x = {}));
-})(kitaly || (kitaly = {}));
-var kitaly;
-(function (kitaly) {
-    var sample06;
-    (function (sample06) {
+        sample06zz.init = init;
+    })(sample06zz = omiend.sample06zz || (omiend.sample06zz = {}));
+})(omiend || (omiend = {}));
+var omiend;
+(function (omiend) {
+    var sample06z;
+    (function (sample06z) {
         var TabSetDirective = (function () {
             function TabSetDirective() {
             }
@@ -65,9 +66,9 @@ var kitaly;
         function init() {
             //Init Process
         }
-        sample06.init = init;
-    })(sample06 = kitaly.sample06 || (kitaly.sample06 = {}));
-})(kitaly || (kitaly = {}));
-kitaly.sample06.init();
-kitaly.sample06x.init();
+        sample06z.init = init;
+    })(sample06z = omiend.sample06z || (omiend.sample06z = {}));
+})(omiend || (omiend = {}));
+omiend.sample06z.init();
+omiend.sample06zz.init();
 //# sourceMappingURL=app.js.map

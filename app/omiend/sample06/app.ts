@@ -1,67 +1,63 @@
 ///<reference path="../../../typings/tsd.d.ts" />
 
-module kitaly.sample06x {
+module omiend.sample06zz {
 
-  export function init(){
+  export function init() {
 
     angular
       .module('sample06App', ['ng'])
-      .controller('tabSetXController', function($scope){
-	this.tabs = $scope.tabs = [];
-	this.addTab = function(tab) {
-	  this.tabs.push(tab);
-	}
+      .controller('tabSetXController', ($scope) => {
+        this.tabs = $scope.tabs = [];
+        this.addTab = function(tab) {
+          this.tabs.push(tab);
+        }
       })
-    .directive('tabSetX', function(){
-      return {
-	restrict: 'E',
-	scope: {},
-	template: 
-	  '<select ng-model="selectedTab" ng-options="tab.header for tab in tabs"> ' +
-	  '</select>' + 
-	  '<div ng-transclude></div>',
-	controller: 'tabSetXController',
-	transclude: true,
-	link: function(scope: any, element, attrs, tabSetCtrl) {
-	  scope.$watch('selectedTab', function(selectedTab){
-	    if(selectedTab){
-	      angular.forEach(scope.tabs, function(tab){
-		tab.isActive = tab.header == selectedTab.header;
-	      })
-	    }
-	  });
-	}
-      }
-    })
-    .directive('tabX', function(){
-      return {
-	restrict: 'E',
-	scope: {},
-	template: '<div ng-show="isActive"> <div ng-transclude></div></div>',
-	require: '^tabSetX',
-	transclude: true,
-	link: function(scope: any, element, attrs, tabSetCtrl) {
-	  scope.header = attrs.header;
-	  tabSetCtrl.addTab(scope);
-	}
-      }
-    })
-  
+      .directive('tabSetX', () => {
+        return {
+          restrict: 'E',
+          scope: {},
+          template: '<select ng-model="selectedTab" ng-options="tab.header for tab in tabs"></select>' +
+                    '<div ng-transclude></div>',
+          controller: 'tabSetXController',
+          transclude: true,
+          link: (scope: any, element, attrs, tabSetCtrl) => {
+            scope.$watch('selectedTab', (selectedTab) => {
+              if (selectedTab) {
+                angular.forEach(scope.tabs, (tab) => {
+                  tab.isActive = tab.header == selectedTab.header;
+                })
+              }
+            });
+          }
+        }
+      })
+      .directive('tabX', () => {
+        return {
+          restrict: 'E',
+          scope: {},
+          template: '<div ng-show="isActive"> <div ng-transclude></div></div>',
+          require: '^tabSetX',
+          transclude: true,
+          link: (scope: any, element, attrs, tabSetCtrl) => {
+            scope.header = attrs.header;
+            tabSetCtrl.addTab(scope);
+          }
+        }
+      })
   }
-
 }
 
-module kitaly.sample06 {
-
+module omiend.sample06z {
 
   class TabSetDirective implements ng.IDirective{}
   class TabSetDController {}
   class TabDirective {}
-  
+
   export function init(){
     //Init Process
+
   }
 }
 
-kitaly.sample06.init();
-kitaly.sample06x.init();
+omiend.sample06z.init();
+omiend.sample06zz.init();
