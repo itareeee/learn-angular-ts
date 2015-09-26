@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="sample">
+
+<head lang="ja">
+  <meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.9.3/lodash.js"></script>
+
+  <title>SampleXX</title>
+    <script>
+        angular.module('sample', ['ng'])
+        .controller('sample01', function($scope) {
+            this.firstName = 'omi01';
+            this.lastName = 'end01';
+            var self = this;
+            this.alertFirstName = function(){
+              console.log("" + self.firstName);
+            }
+        })
+        .controller('sample02', function($scope) {
+            this.firstName = 'omi02';
+            this.lastName = 'end02';
+        });
+    </script>
+</head>
+
+<body>
+
+<div ng-controller="sample01 as ctrl">
+
+  名：<input type="text" ng-model="ctrl.firstName" ng-focus="ctrl.alertFirstName()"><br/>
+  姓：<input type="text" ng-model="ctrl.lastName"><br/>
+  Hello, {{ctrl.firstName}} {{ctrl.lastName}}!<br/>
+  Hello, :: {{::ctrl.firstName}} {{::ctrl.lastName}}!
+
+</div>
+
+<div ng-controller="sample02 as ctrl">
+
+  名：<input type="text" ng-model="ctrl.firstName"><br/>
+  姓：<input type="text" ng-model="ctrl.lastName"><br/>
+  Hello, {{ctrl.firstName}} {{ctrl.lastName}}!<br/>
+  Hello, :: {{::ctrl.firstName}} {{::ctrl.lastName}}!
+
+</div>
+
+</body>
+
+</html>
