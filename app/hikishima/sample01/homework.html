@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="sample">
+
+<head lang="ja">
+  <meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.9.3/lodash.js"></script>
+  <script src="app.js"></script>
+
+  <title>SampleXX</title>
+</head>
+
+<body ng-controller="sampleController as ctrl">
+  <div>
+    <button ng-click="ctrl.changeNameCandidate()">
+      <span ng-show="ctrl.isNameCandidate">名前候補を非表示にする</span>
+      <span ng-hide="ctrl.isNameCandidate">名前候補を表示にする</span>
+    </button>
+
+    <br><br>
+
+    <div ng-show="ctrl.isNameCandidate">
+      名前候補：
+      <button ng-click="ctrl.setName('yasunari', 'hikishima')">yasunari hikishima</button>
+      <button ng-click="ctrl.setName('tarou', 'yamada')">tarou yamada</button>
+    </div>
+  </div>
+
+  <br>
+  <br>
+  <div>
+    first name<input type="text" ng-model="ctrl.first"><br>
+    last name<input type="text" ng-model="ctrl.last"><br><br>
+    hello,{{ctrl.first}} {{ctrl.last}}!
+  </div>
+</body>
+
+</html>
