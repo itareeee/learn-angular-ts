@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="invoiceApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.9.3/lodash.js"></script>
+  <script src="app.js"></script>
+  <title></title>
+  <style>
+    h1:after,
+    dt:after {
+      content: ':';
+    }
+  </style>
+</head>
+<body
+  ng-controller="invoiceController as ctrl"
+  ng-init="currencies = [
+    {'val': 'USD'},
+    {'val': 'EUR'},
+    {'val': 'CNY'}
+  ]">
+
+<section>
+  <h1>Invoice</h1>
+  <dl>
+    <dt>Quantity</dt>
+    <dd><input type="number" ng-model="ctrl.quantity"></dd>
+    <dt>Costs</dt>
+    <dd><input type="number" ng-model="ctrl.costs"></dd>
+    <dd>
+      <select>
+        <option
+          ng-repeat="currency in currencies"
+          ng-selected="currency.val == 'EUR'"
+          value="{{currency}}">{{currency.val}}</option>
+      </select>
+    </dd>
+  </dl>
+</section>
+
+<section>
+  <h1>Total</h1>
+  <dl ng-repeat="currency in currencies">
+    <dt>{{currency.val}}</dt>
+    <dd ng-if="currency.val == 'USD'">{{ctrl.quantity * ctrl.costs * 1.11}}</dd>
+    <dd ng-if="currency.val == 'EUR'">{{ctrl.quantity * ctrl.costs * 1.00}}</dd>
+    <dd ng-if="currency.val == 'CNY'">{{ctrl.quantity * ctrl.costs * 6.88}}</dd>
+  </dl>
+</section>
+
+<section>
+  <button ng-click="ctrl.pay()">Pay</button>
+</section>
+
+</body>
+</html>

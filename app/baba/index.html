@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.9.3/lodash.js"></script>
+  <title>homework 2015/06/25</title>
+
+  <script>
+    angular.module("candidatesApp", ['ng']).controller('candidates', function(){
+
+      // initialize
+      this.firstName = 'Michael',
+      this.lastName = 'Jordan';
+      this.appearance;
+
+      // function
+      this.toggleAppearance = function(){
+        this.appearance = !this.appearance;
+      };
+      this.setCandidateFullName=function( firstName,lastName ){
+        this.firstName = firstName;
+        this.lastName = lastName;
+      };
+
+    });  
+  </script>
+
+</head>
+<body>
+
+<section ng-app="candidatesApp">
+
+  <form ng-controller="candidates as ctrl">
+  
+    <button ng-click="ctrl.toggleAppearance()">
+      名前候補を
+      <span ng-if="ctrl.appearance">非表示に</span>
+      <span ng-if="!ctrl.appearance">表示</span>
+      する
+    </button>
+
+    <dl ng-if="ctrl.appearance">
+      <dt>名前候補：</dt>
+      <dd ng-click="ctrl.setCandidateFullName('Itaru','Kitagawa')">Itaru Kitagawa</dd>
+      <dd ng-click="ctrl.setCandidateFullName('Ryuta','Sakamoto')">Ryuta Sakamoto</dd>
+    </dl>
+
+    <legend>
+      <label>First Name: <input type="text" ng-model="ctrl.firstName"></label>
+      <label>Last Name: <input type="text" ng-model="ctrl.lastName"></label>
+    </legend>
+
+    <p>Hello, {{ctrl.firstName}} {{ctrl.lastName}}</p>
+
+  </form>
+
+</section>
+  
+</body>
+</html>
